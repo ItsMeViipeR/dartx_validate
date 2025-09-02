@@ -1,16 +1,19 @@
 import 'package:dartx_validate/dartx_validate.dart';
 import 'package:test/test.dart';
 
-void main() {
-  group('A group of tests', () {
-    final awesome = Awesome();
+import '../example/dartx_validate_example.dart';
 
-    setUp(() {
-      // Additional setup goes here.
+void main() {
+  final correctUser = User("test@example.com");
+  final incorrectUser = User("test#example.com");
+
+  group("Validators", () {
+    test("Email Validator", () {
+      expect(validate(correctUser), true);
     });
 
-    test('First Test', () {
-      expect(awesome.isAwesome, isTrue);
+    test("Email Validator - Invalid", () {
+      expect(validate(incorrectUser), false);
     });
   });
 }

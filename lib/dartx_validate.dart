@@ -4,5 +4,4 @@
 library;
 
 export 'src/dartx_validate_base.dart';
-
-// TODO: Export any libraries intended for clients of this package.
+export 'src/decorators/email.dart';
