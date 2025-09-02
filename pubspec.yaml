@@ -1,5 +1,5 @@
 name: dartx_validate
-description: A starting point for Dart libraries or applications.
+description: Dartx Validate is a Zod-like validation library for Dart, providing a simple and expressive way to validate data structures.
 version: 0.0.1
 repository: https://github.com/ItsMeViipeR/dartx_validate
 homepage: https://github.com/ItsMeViipeR/dartx_validate
