@@ -28,6 +28,14 @@ bool validate(Object obj) {
             return false;
           }
         }
+
+        if (annotationType == Max && fieldValue is int) {
+          final maxValue = (meta.reflectee as Max).max;
+          final validator = Max(maxValue);
+          if (!validator.validate(fieldValue)) {
+            return false;
+          }
+        }
       }
     }
   }

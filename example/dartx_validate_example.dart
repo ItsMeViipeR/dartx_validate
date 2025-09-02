@@ -5,6 +5,7 @@ class User {
   final String email;
 
   @Min(0)
+  @Max(100)
   final int age;
 
   User(this.email, this.age);

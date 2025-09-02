@@ -7,6 +7,7 @@ void main() {
   final correctUser = User("test@example.com", 25);
   final incorrectEmail = User("test#example.com", 25);
   final incorrectAge = User("test@example.com", -1);
+  final incorrectMaxAge = User("test@example.com", 151);
 
   group("Validators", () {
     test("Email Validator", () {
@@ -19,6 +20,10 @@ void main() {
 
     test("Age Validator - Invalid", () {
       expect(validate(incorrectAge), false);
+    });
+
+    test("Age Validator - Invalid", () {
+      expect(validate(incorrectMaxAge), false);
     });
   });
 }

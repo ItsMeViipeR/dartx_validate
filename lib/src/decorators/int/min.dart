@@ -6,7 +6,6 @@ class Min implements Validator<int> {
 
   @override
   bool validate(int value) {
-    print('Validating $value >= $min');
     return value >= min;
   }
 
