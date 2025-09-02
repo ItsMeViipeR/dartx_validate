@@ -4,11 +4,14 @@ class User {
   @Email()
   final String email;
 
-  User(this.email);
+  @Min(0)
+  final int age;
+
+  User(this.email, this.age);
 }
 
 void main() {
-  final user = User('test@example.com');
+  final user = User('test@example.com', 25);
 
   if (validate(user)) {
     print("OK");

@@ -4,8 +4,9 @@ import 'package:test/test.dart';
 import '../example/dartx_validate_example.dart';
 
 void main() {
-  final correctUser = User("test@example.com");
-  final incorrectUser = User("test#example.com");
+  final correctUser = User("test@example.com", 25);
+  final incorrectEmail = User("test#example.com", 25);
+  final incorrectAge = User("test@example.com", -1);
 
   group("Validators", () {
     test("Email Validator", () {
@@ -13,7 +14,11 @@ void main() {
     });
 
     test("Email Validator - Invalid", () {
-      expect(validate(incorrectUser), false);
+      expect(validate(incorrectEmail), false);
+    });
+
+    test("Age Validator - Invalid", () {
+      expect(validate(incorrectAge), false);
     });
   });
 }

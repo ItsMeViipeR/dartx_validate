@@ -2,21 +2,6 @@ import 'dart:mirrors';
 
 import 'package:dartx_validate/dartx_validate.dart';
 
-abstract class Validator<T> {
-  const Validator();
-
-  bool validate(T value) {
-    return true;
-  }
-
-  String get errorMessage => 'Invalid value';
-
-  @override
-  String toString() {
-    return 'Validator: $errorMessage';
-  }
-}
-
 bool validate(Object obj) {
   final instanceMirror = reflect(obj);
   final classMirror = instanceMirror.type;
@@ -32,7 +17,14 @@ bool validate(Object obj) {
         if (annotationType == Email) {
           final validator = Email();
           if (!validator.validate(fieldValue)) {
-            print(validator.errorMessage);
+            return false;
+          }
+        }
+
+        if (annotationType == Min && fieldValue is int) {
+          final minValue = (meta.reflectee as Min).min;
+          final validator = Min(minValue);
+          if (!validator.validate(fieldValue)) {
             return false;
           }
         }
