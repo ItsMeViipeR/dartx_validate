@@ -28,8 +28,6 @@ bool validate(Object obj) {
             return false;
           }
         }
-
-        // Ici tu peux ajouter d'autres décorateurs et validators
       }
     }
   }
