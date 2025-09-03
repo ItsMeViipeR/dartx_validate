@@ -31,17 +31,22 @@ To create a schema with Dartx Validate, use the provided decorators. Here's an e
 import 'package:dartx_validate/dartx_validate.dart';
 
 class User {
-    @MinLength(3)
-    @MaxLength(30)
-    final String name;
+  @Email()
+  final String email;
 
-    @Email()
-    final String email;
+  @MinLength(2)
+  @MaxLength(100)
+  @NotEmpty()
+  final String name;
 
-    @Min(0)
-    final int age;
+  @Min(0)
+  @Max(100)
+  final int age;
 
-    User({required this.name, required this.email, required this.age});
+  @Positive()
+  final int id;
+
+  User(this.name, this.email, this.age, this.id);
 }
 ```
 
@@ -53,17 +58,13 @@ To validate an instance of the `User` class, you can use the `validate` function
 import 'package:dartx_validate/dartx_validate.dart';
 
 void main() {
-    final user = User(name: 'John Doe', email: 'john.doe@example.com', age: 30);
-    final errors = validate(user);
-    if (errors.isNotEmpty) {
-        print('Validation errors found:');
-        for (var error in errors) {
-            print('- $error');
-        }
-    } else {
-        print('User is valid!');
-    }
+  final user = User('John Doe', 'john.doe@example.com', 30, 1);
+
+  if (validate(user)) {
+    print("OK");
+  }
 }
+
 ```
 
 ## Custom Validators
@@ -73,7 +74,7 @@ To create custom validators, you can extend the base validator class and impleme
 ```dart
 import 'package:dartx_validate/dartx_validate.dart';
 
-class IsEven extends Validator<int> {
+class Even extends Validator<int> {
     @override
     bool validate(int value) {
         return value % 2 == 0;
@@ -88,10 +89,10 @@ class IsEven extends Validator<int> {
 
 ```dart
 class NumberHolder {
-    @IsEven()
+    @Even()
     final int number;
 
-    NumberHolder({required this.number});
+    NumberHolder(this.number);
 }
 ```
 

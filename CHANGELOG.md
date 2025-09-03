@@ -9,3 +9,7 @@
 ## 0.0.3
 
 - Added Positive validation
+
+## 1.0.0
+
+- Added NotEmpty validation and updated documentation

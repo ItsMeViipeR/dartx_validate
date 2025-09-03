@@ -10,6 +10,7 @@ void main() {
   final incorrectMaxAge = User("John Doe", "test@example.com", 151, 1);
   final incorrectName = User("J", "john.doe@example.com", 30, 1);
   final incorrectId = User("John Doe", "john.doe@example.com", 30, -1);
+  final emptyName = User("", "john.doe@example.com", 30, 1);
 
   group("Validators", () {
     test("Email Validator", () {
@@ -34,6 +35,10 @@ void main() {
 
     test("ID Validator - Invalid", () {
       expect(validate(incorrectId), false);
+    });
+
+    test("Name Validator - Empty", () {
+      expect(validate(emptyName), false);
     });
   });
 }

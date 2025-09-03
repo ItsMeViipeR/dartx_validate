@@ -6,6 +6,7 @@ class User {
 
   @MinLength(2)
   @MaxLength(100)
+  @NotEmpty()
   final String name;
 
   @Min(0)

@@ -56,7 +56,15 @@ bool validate(Object obj) {
         if (annotationType == Positive && fieldValue is int) {
           final validator = Positive();
 
-          if(!validator.validate(fieldValue)) {
+          if (!validator.validate(fieldValue)) {
+            return false;
+          }
+        }
+
+        if (annotationType == NotEmpty && fieldValue is String) {
+          final validator = NotEmpty();
+
+          if (!validator.validate(fieldValue)) {
             return false;
           }
         }
