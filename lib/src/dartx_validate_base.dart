@@ -36,6 +36,22 @@ bool validate(Object obj) {
             return false;
           }
         }
+
+        if (annotationType == MinLength && fieldValue is String) {
+          final minLength = (meta.reflectee as MinLength).min;
+          final validator = MinLength(minLength);
+          if (!validator.validate(fieldValue)) {
+            return false;
+          }
+        }
+
+        if (annotationType == MaxLength && fieldValue is String) {
+          final maxLength = (meta.reflectee as MaxLength).max;
+          final validator = MaxLength(maxLength);
+          if (!validator.validate(fieldValue)) {
+            return false;
+          }
+        }
       }
     }
   }

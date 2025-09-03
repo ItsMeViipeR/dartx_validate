@@ -4,15 +4,19 @@ class User {
   @Email()
   final String email;
 
+  @MinLength(2)
+  @MaxLength(100)
+  final String name;
+
   @Min(0)
   @Max(100)
   final int age;
 
-  User(this.email, this.age);
+  User(this.name, this.email, this.age);
 }
 
 void main() {
-  final user = User('test@example.com', 25);
+  final user = User('John Doe', 'john.doe@example.com', 30);
 
   if (validate(user)) {
     print("OK");
