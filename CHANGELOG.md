@@ -5,3 +5,7 @@
 ## 0.0.2
 
 - Added MinLength and MaxLength validations
+
+## 0.0.3
+
+- Added Positive validation
