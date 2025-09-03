@@ -9,4 +9,5 @@ export 'src/decorators/int/min.dart';
 export 'src/decorators/int/max.dart';
 export 'src/decorators/length/min.dart';
 export 'src/decorators/length/max.dart';
+export 'src/decorators/int/positive.dart';
 export 'src/validator.dart';

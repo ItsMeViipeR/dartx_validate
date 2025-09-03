@@ -12,11 +12,14 @@ class User {
   @Max(100)
   final int age;
 
-  User(this.name, this.email, this.age);
+  @Positive()
+  final int id;
+
+  User(this.name, this.email, this.age, this.id);
 }
 
 void main() {
-  final user = User('John Doe', 'john.doe@example.com', 30);
+  final user = User('John Doe', 'john.doe@example.com', 30, 1);
 
   if (validate(user)) {
     print("OK");

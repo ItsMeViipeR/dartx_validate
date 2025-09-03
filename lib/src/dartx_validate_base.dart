@@ -52,6 +52,14 @@ bool validate(Object obj) {
             return false;
           }
         }
+
+        if (annotationType == Positive && fieldValue is int) {
+          final validator = Positive();
+
+          if(!validator.validate(fieldValue)) {
+            return false;
+          }
+        }
       }
     }
   }
