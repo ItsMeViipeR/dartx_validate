@@ -14,7 +14,7 @@ bool validate(Object obj) {
       for (var meta in decl.metadata) {
         final annotationType = meta.reflectee.runtimeType;
 
-        if (annotationType == Email) {
+        if (annotationType == Email && fieldValue is String) {
           final validator = Email();
           if (!validator.validate(fieldValue)) {
             return false;
