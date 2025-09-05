@@ -76,6 +76,14 @@ bool validate(Object obj) {
             return false;
           }
         }
+
+        if (annotationType == Unique && fieldValue is List) {
+          final validator = Unique();
+
+          if (!validator.validate(fieldValue)) {
+            return false;
+          }
+        }
       }
     }
   }
