@@ -1,7 +1,7 @@
 import 'package:dartx_validate/dartx_validate.dart';
 
-class NotEmpty implements Validator<String> {
-  const NotEmpty();
+class NotEmptyString implements Validator<String> {
+  const NotEmptyString();
 
   @override
   bool validate(String value) {

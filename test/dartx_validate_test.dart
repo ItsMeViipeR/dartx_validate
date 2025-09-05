@@ -4,13 +4,20 @@ import 'package:test/test.dart';
 import '../example/dartx_validate_example.dart';
 
 void main() {
-  final correctUser = User('John Doe', 'john.doe@example.com', 30, 1);
-  final incorrectEmail = User("John Doe", "test#example.com", 25, 1);
-  final incorrectAge = User("John Doe", "test@example.com", -1, 1);
-  final incorrectMaxAge = User("John Doe", "test@example.com", 151, 1);
-  final incorrectName = User("J", "john.doe@example.com", 30, 1);
-  final incorrectId = User("John Doe", "john.doe@example.com", 30, -1);
-  final emptyName = User("", "john.doe@example.com", 30, 1);
+  final correctUser = User('John Doe', 'john.doe@example.com', 30, 1, [
+    'admin',
+  ]);
+  final incorrectEmail = User("John Doe", "test#example.com", 25, 1, ['admin']);
+  final incorrectAge = User("John Doe", "test@example.com", -1, 1, ['admin']);
+  final incorrectMaxAge = User("John Doe", "test@example.com", 151, 1, [
+    'admin',
+  ]);
+  final incorrectName = User("J", "john.doe@example.com", 30, 1, ['admin']);
+  final incorrectId = User("John Doe", "john.doe@example.com", 30, -1, [
+    'admin',
+  ]);
+  final emptyName = User("", "john.doe@example.com", 30, 1, ['admin']);
+  final emptyList = User("John Doe", "john.doe@example.com", 30, 1, []);
 
   group("Validators", () {
     test("Email Validator", () {
@@ -39,6 +46,10 @@ void main() {
 
     test("Name Validator - Empty", () {
       expect(validate(emptyName), false);
+    });
+
+    test("List Validator - Empty", () {
+      expect(validate(emptyList), false);
     });
   });
 }

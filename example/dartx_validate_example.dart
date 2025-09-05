@@ -6,7 +6,7 @@ class User {
 
   @MinLength(2)
   @MaxLength(100)
-  @NotEmpty()
+  @NotEmptyString()
   final String name;
 
   @Min(0)
@@ -16,11 +16,14 @@ class User {
   @Positive()
   final int id;
 
-  User(this.name, this.email, this.age, this.id);
+  @NotEmptyList()
+  final List<String> roles;
+
+  User(this.name, this.email, this.age, this.id, this.roles);
 }
 
 void main() {
-  final user = User('John Doe', 'john.doe@example.com', 30, 1);
+  final user = User('John Doe', 'john.doe@example.com', 30, 1, ['admin']);
 
   if (validate(user)) {
     print("OK");

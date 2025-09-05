@@ -13,3 +13,9 @@
 ## 1.0.0
 
 - Added NotEmpty validation and updated documentation
+
+## 1.1.0
+
+- Renamed NotEmpty to NotEmptyString
+- Added NotEmptyList validation
+- Changed repository and homepage links

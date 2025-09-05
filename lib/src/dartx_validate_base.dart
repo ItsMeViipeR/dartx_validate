@@ -61,8 +61,16 @@ bool validate(Object obj) {
           }
         }
 
-        if (annotationType == NotEmpty && fieldValue is String) {
-          final validator = NotEmpty();
+        if (annotationType == NotEmptyString && fieldValue is String) {
+          final validator = NotEmptyString();
+
+          if (!validator.validate(fieldValue)) {
+            return false;
+          }
+        }
+
+        if (annotationType == NotEmptyList && fieldValue is List) {
+          final validator = NotEmptyList();
 
           if (!validator.validate(fieldValue)) {
             return false;
